@@ -19,5 +19,13 @@ public class MainActivity extends AppCompatActivity {
 
         View root  = activityMainBinding.getRoot();
         setContentView(root);
+
+        // 获取布局中有id的某个元素
+        activityMainBinding.btnButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                activityMainBinding.btnButton.setText("after click");
+            }
+        });
     }
 }
