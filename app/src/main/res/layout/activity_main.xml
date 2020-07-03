@@ -19,19 +19,19 @@
             android:id="@+id/tv_user_first_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{user.firstName, default = hanhan}" />
+            android:text='@{user.firstName}' />
 
         <TextView
             android:id="@+id/tv_user_last_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{user.lastName, default = huang}" />
+            android:text="@{user.lastName}" />
 
         <Button
-            android:id="@+id/btn_button"
+            android:id="@+id/btn_change_user"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="before click" />
+            android:text="change user" />
 
 
     </LinearLayout>

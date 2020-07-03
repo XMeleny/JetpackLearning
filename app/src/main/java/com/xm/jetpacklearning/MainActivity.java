@@ -29,15 +29,16 @@ public class MainActivity extends AppCompatActivity {
         View root = activityMainBinding.getRoot();
         setContentView(root);
 
-        // 数据绑定
-        User user = new User("xiaomei", "zhu");
+        final User user = new User();
         activityMainBinding.setUser(user);
 
         // 布局绑定：获取布局中有id的某个元素
-        activityMainBinding.btnButton.setOnClickListener(new View.OnClickListener() {
+        activityMainBinding.btnChangeUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                activityMainBinding.btnButton.setText("after click");
+                // 数据绑定（动态变化）
+                user.firstName.set("xiaomei");
+                user.lastName.set("zhu");
             }
         });
     }
