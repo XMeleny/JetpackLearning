@@ -20,6 +20,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    // 视图绑定组件
+    viewBinding {
+        enabled = true
+    }
 }
 
 dependencies {
