@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.xm.jetpacklearning.databinding.ActivityMainBinding;
 
@@ -20,14 +22,17 @@ public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding activityMainBinding;
 
+    private UserViewModel userViewModel;
+
+    int count = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         activityMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
 
-        View root = activityMainBinding.getRoot();
-        setContentView(root);
+        setContentView(activityMainBinding.getRoot());
 
         final User user = new User();
         activityMainBinding.setUser(user);
@@ -39,7 +44,21 @@ public class MainActivity extends AppCompatActivity {
                 // 数据绑定（动态变化）
                 user.firstName.set("xiaomei");
                 user.lastName.set("zhu");
+
+                count++;
+                userViewModel.getName().setValue("name" + count);
             }
         });
+
+        userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
+
+        final Observer<String> nameObserver = new Observer<String>() {
+            @Override
+            public void onChanged(String name) {
+                activityMainBinding.tvName.setText(name);
+            }
+        };
+
+        userViewModel.getName().observe(this, nameObserver);
     }
 }
