@@ -25,6 +25,11 @@ android {
     viewBinding {
         enabled = true
     }
+
+    //数据绑定组件
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
